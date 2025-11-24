@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "10"
+    deployment.kubernetes.io/max-replicas: "10"
+    deployment.kubernetes.io/revision: "12"
+    deployment.kubernetes.io/revision-history: "4"
+  creationTimestamp: "2025-11-19T22:43:57Z"
+  generation: 20
+  labels:
+    app: nginx-deployment
+    pod-template-hash: 68bc7d8df6
+  name: nginx-deployment-68bc7d8df6
+  namespace: giropops
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: nginx-deployment
+    uid: 54bdb7cf-501b-4b2b-aaeb-a92d8e6541fb
+  resourceVersion: "10899"
+  uid: 8839a29c-3b2a-4573-b66b-fa3e5d8eb387
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: nginx-deployment
+      pod-template-hash: 68bc7d8df6
+  template:
+    metadata:
+      labels:
+        app: nginx-deployment
+        pod-template-hash: 68bc7d8df6
+    spec:
+      containers:
+      - image: nginx:1.14.0
+        imagePullPolicy: IfNotPresent
+        name: nginx
+        resources:
+          limits:
+            cpu: 500m
+            memory: 256Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  observedGeneration: 20
+  replicas: 0

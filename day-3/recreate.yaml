@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-deployment
+  name: nginx-deployment
+  namespace: giropops
+spec:
+  replicas: 10
+  selector:
+   matchLabels:
+    app: nginx-deployment
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: nginx-deployment
+    spec:  # <-- CORRETO: Este 'spec' define o Pod e contém os containers.
+      containers:
+        - image: nginx:1.15.0
+          name: nginx
+          resources:
+            limits:
+              cpu: "0.5"
+              memory: 256Mi

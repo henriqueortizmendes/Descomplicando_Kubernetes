@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: meunginx
+    service: webserver
+  name: meunginx
+spec:
+  containers:
+  - image: nginx
+    name: meunginx
+    resources: {}
+
+  - image: busybox
+    name: busybox
+    args: 
+    - sleep
+    - "70"
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
